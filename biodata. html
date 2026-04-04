@@ -114,34 +114,34 @@
         
         <div class="content">
             <h2>Nama Lengkap</h2>
-            <p class="job">Web Developer / Mahasiswa</p>
+            <p class=Dhiska Asaning Tyas</p>
 
             <table>
                 <tr>
                     <td class="label">Tempat Lahir</td>
-                    <td class="value">Jakarta</td>
+                    <td class="value"< Nganjuk </td>
                 </tr>
                 <tr>
                     <td class="label">Tanggal Lahir</td>
-                    <td class="value">01 Januari 2000</td>
+                    <td class="value">31 Desember 2005</td>
                 </tr>
                 <tr>
                     <td class="label">Alamat</td>
-                    <td class="value">Jl. Contoh No. 123, Indonesia</td>
+                    <td class="value">Jl. Rambai Tengah, Banjarbaru</td>
                 </tr>
                 <tr>
                     <td class="label">Email</td>
-                    <td class="value">halo@emailkamu.com</td>
+                    <td class="value">tyasdhiskaasaningtyas@gmail.com</td>
                 </tr>
                 <tr>
                     <td class="label">Hobi</td>
-                    <td class="value">Coding, Membaca, Musik</td>
+                    <td class="value">Mendengarkan Musik</td>
                 </tr>
             </table>
         </div>
 
         <div class="footer">
-            <a href="mailto:halo@emailkamu.com" class="btn">Hubungi Saya</a>
+            <a href="mailto:tyasdhiskaasaning@gmail.com class="btn">Hubungi Saya</a>
         </div>
     </div>
 

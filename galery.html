@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri 4 Foto</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Container Galeri */
+        .gallery-container {
+            display: grid;
+            /* Membuat 2 kolom yang sama besar */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Frame Foto */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 1 / 1; /* Membuat foto kotak sempurna */
+            cursor: pointer;
+        }
+
+        /* Pengaturan Gambar */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Agar gambar tidak gepeng */
+            transition: transform 0.5s ease;
+        }
+
+        /* Efek Zoom saat Hover */
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay Text (Muncul saat kursor di atas foto) */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Responsive: Jadi 1 kolom jika layar kecil (HP) */
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Koleksi Foto</h1>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="https://picsum.photos/500/500?random=1" alt="Foto 1">
+            <div class="overlay">Pemandangan Alam</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/500/500?random=2" alt="Foto 2">
+            <div class="overlay">Arsitektur</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/500/500?random=3" alt="Foto 3">
+            <div class="overlay">Fotografi Jalanan</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/500/500?random=4" alt="Foto 4">
+            <div class="overlay">Hobi & Gaya Hidup</div>
+        </div>
+    </div>
+
+</body>
+</html>

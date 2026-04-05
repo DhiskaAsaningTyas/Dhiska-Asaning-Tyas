@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player Eksklusif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0f0c29;  /* Warna gelap premium */
+            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        /* NAVIGASI */
+        nav {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #00d2ff;
+        }
+
+        /* KONTEN UTAMA */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            padding: 40px 0;
+        }
+
+        .video-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .video-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        /* CONTAINER VIDEO (TAMPILAN KEREN) */
+        .video-wrapper {
+            width: 100%;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+        }
+
+        /* Menjaga aspek rasio 16:9 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+        }
+
+        .video-container video, 
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* DESKRIPSI VIDEO */
+        .video-description {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .video-description h2 {
+            font-size: 1.2rem;
+            color: #00d2ff;
+            margin-bottom: 10px;
+        }
+
+        .video-description p {
+            color: #bdc3c7;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .video-header h1 { font-size: 1.8rem; }
+            .main-content { width: 95%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="biodata.html">BIODATA</a>
+        <a href="galeri.html">GALERI</a>
+        <a href="video.html" style="color: white; font-weight: bold;">VIDEO</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="video-header">
+            <h1>Featured Video</h1>
+            <p>Tonton karya terbaik saya di bawah ini</p>
+        </div>
+
+        <div class="video-wrapper">
+            <div class="video-container">
+                <video controls poster="https://via.placeholder.com/1000x562/000000/FFFFFF?text=Klik+Untuk+Putar">
+                    <source src="video-utama.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+
+                </div>
+        </div>
+
+        <div class="video-description">
+            <h2>Tentang Video Ini</h2>
+            <p>Ini adalah tugas pembuatan website menggunakan GitHub Pages. Video ini menunjukkan kreativitas dalam menggabungkan elemen multimedia ke dalam sebuah platform web yang responsif dan modern.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Nama Kamu - GitHub Project
+    </footer>
+
+</body>
+</html>

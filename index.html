@@ -1,72 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumpulan Tugas Web Saya</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
         }
 
-        nav {
-            background: rgba(0,0,0,0.6);
-            padding: 15px;
+        body {
+            background: #1a1a2e;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #00d4ff;
         }
 
         .container {
-            padding: 40px;
-            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #00d2ff;
+        }
+
+        p {
+            margin-bottom: 40px;
+            color: #adb5bd;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .card {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
             border-radius: 15px;
-            width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: block;
         }
 
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            text-align: center;
-            background: rgba(0,0,0,0.5);
+        .card:hover {
+            transform: translateY(-10px);
+            background: #00d2ff;
+            color: #1a1a2e;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.4);
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+        }
+
+        .status.pending {
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="biodata.html">biodata</a>
-    <a href="galeri.html">Galeri</a>
-    <a href="video.html">Video</a>
-</nav>
+    <div class="container">
+        <h1>Portal Tugas Web</h1>
+        <p>Selamat datang di repositori tugas mata kuliah desain web saya.</p>
 
-<div class="container">
-    <h1>Selamat Datang Dhiskaaa 👋</h1>
-    <div class="card">
-        <p>Ini adalah website tugas saya menggunakan HTML dan CSS yang unik.</p>
+        <div class="menu-grid">
+            <a href="tugas1/index.html" class="card">
+                <h2>Tugas 1</h2>
+                <p>Website Biodata, Galeri, dan Video</p>
+                <span class="status">Selesai</span>
+            </a>
+
+            <a href="tugas2/index.html" class="card">
+                <h2>Tugas 2</h2>
+                <p>Proyek baru akan datang di sini</p>
+                <span class="status pending">Coming Soon</span>
+            </a>
+        </div>
     </div>
-</div>
-
-<footer>
-    <p>© 2026 Website Saya</p>
-</footer>
 
 </body>
 </html>

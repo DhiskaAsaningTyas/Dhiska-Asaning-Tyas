@@ -208,3 +208,61 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Saya</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* NAVBAR */
+        nav { background: rgba(0, 0, 0, 0.7); padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #00f2fe; }
+
+        .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        
+        .card { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); animation: fadeIn 1s ease; }
+        .card img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #4facfe; object-fit: cover; margin-bottom: 15px; }
+        
+        h1 { margin-bottom: 20px; font-size: 24px; }
+
+        /* PERBAIKAN KERAPIAN ISI */
+        .info-group { text-align: left; margin-top: 10px; }
+        p { display: flex; margin: 12px 0; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        strong { color: #4facfe; min-width: 80px; flex-shrink: 0; }
+        span { padding-left: 5px; word-break: break-word; }
+
+        footer { text-align: center; padding: 15px; background: rgba(0, 0, 0, 0.7); color: white; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="video.html">Video</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <img src="poto pp.jpeg" alt="Foto Profil">
+            <h1>Biodata Saya</h1>
+            <div class="info-group">
+                <p><strong>Nama</strong>: <span>Dhiska Asaning Tyas</span></p>
+                <p><strong>NIM</strong>: <span>2310715120007</span></p>
+                <p><strong>Jurusan</strong>: <span>Sosial Ekonomi Perikanan</span></p>
+                <p><strong>Umur</strong>: <span>20 Tahun</span></p>
+                <p><strong>Alamat</strong>: <span>Jl. Rambai Tengah, Banjarbaru</span></p>
+                <p><strong>Hobi</strong>: <span>Mendengarkan Musik</span></p>
+                <p><strong>Email</strong>: <span>tyasdhiskaasaning@gmail.com</span></p>
+            </div>
+        </div>
+    </div>
+    <footer><p>© 2026 Website Saya</p></footer>
+</body>
+</html>

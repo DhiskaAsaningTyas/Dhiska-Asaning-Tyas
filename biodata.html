@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Dhiska</title>
+    <title>Biodata Dhiska Asaning Tyas</title>
     <style>
-        /* RESET DASAR */
+        /* 1. PENGATURAN DASAR */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +21,7 @@
             flex-direction: column;
         }
 
-        /* NAVBAR */
+        /* 2. NAVBAR (NAVIGASI) */
         nav {
             background: rgba(0, 0, 0, 0.7);
             padding: 15px;
@@ -40,8 +40,8 @@
             color: #00f2fe;
         }
 
-        /* CONTAINER UTAMA */
-        .container {
+        /* 3. CONTAINER TENGAH */
+        .main-container {
             flex: 1;
             display: flex;
             justify-content: center;
@@ -49,61 +49,62 @@
             padding: 20px;
         }
 
-        /* CARD BIODATA */
+        /* 4. KARTU BIODATA */
         .card {
             background: white;
-            padding: 35px;
+            padding: 40px 30px;
             border-radius: 20px;
             width: 100%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: muncul 1s ease-out;
         }
 
+        /* Foto Profil */
         .card img {
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin-bottom: 20px;
-            border: 5px solid #4facfe;
+            border: 4px solid #4facfe;
             object-fit: cover;
         }
 
         h1 {
+            font-size: 24px;
             margin-bottom: 25px;
             color: #2c3e50;
-            font-size: 26px;
-            letter-spacing: 1px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
 
-        /* STRUKTUR BIODATA AGAR SEJAJAR */
-        .info-group {
+        /* 5. BAGIAN ISI BIODATA (AGAR RAPI & LURUS) */
+        .info-wrapper {
             text-align: left;
         }
 
-        .info-item {
-            display: flex; /* Membuat label dan isi bersampingan */
+        .baris {
+            display: flex; /* Membuat label dan isi sejajar */
             margin-bottom: 12px;
             font-size: 15px;
-            line-height: 1.5;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 8px;
+            line-height: 1.6;
         }
 
         .label {
-            color: #4facfe;
             font-weight: bold;
-            min-width: 90px; /* Menentukan lebar tetap untuk label */
-            flex-shrink: 0; /* Mencegah label menyempit */
+            color: #4facfe;
+            width: 80px; /* Lebar kolom label agar titik dua sejajar */
+            flex-shrink: 0;
         }
 
-        .value {
+        .isi {
+            flex: 1;
             color: #555;
-            word-break: break-word; /* Mencegah teks keluar kotak */
+            word-break: break-word; /* Agar teks panjang tidak keluar kotak */
         }
 
-        /* FOOTER */
+        /* 6. FOOTER */
         footer {
             text-align: center;
             padding: 15px;
@@ -112,9 +113,9 @@
             font-size: 14px;
         }
 
-        /* ANIMASI MASUK */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Animasi Muncul */
+        @keyframes muncul {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -128,47 +129,47 @@
         <a href="video.html">Video</a>
     </nav>
 
-    <div class="container">
+    <div class="main-container">
         <div class="card">
-            <img src="poto pp.jpeg" alt="Dhiska Profile">
+            <img src="poto pp.jpeg" alt="Profil Dhiska">
             
-            <h1>Profil Diri</h1>
+            <h1>Biodata Saya</h1>
 
-            <div class="info-group">
-                <div class="info-item">
-                    <span class="label">Nama</span>
-                    <span class="value">: Dhiska Asaning Tyas</span>
+            <div class="info-wrapper">
+                <div class="baris">
+                    <div class="label">Nama</div>
+                    <div class="isi">: Dhiska Asaning Tyas</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">NIM</span>
-                    <span class="value">: 2310715120007</span>
+                <div class="baris">
+                    <div class="label">NIM</div>
+                    <div class="isi">: 2310715120007</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Jurusan</span>
-                    <span class="value">: Sosial Ekonomi Perikanan</span>
+                <div class="baris">
+                    <div class="label">Jurusan</div>
+                    <div class="isi">: Sosial Ekonomi Perikanan</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Umur</span>
-                    <span class="value">: 20 Tahun</span>
+                <div class="baris">
+                    <div class="label">Umur</div>
+                    <div class="isi">: 20 Tahun</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Alamat</span>
-                    <span class="value">: Jl. Rambai Tengah, Banjarbaru</span>
+                <div class="baris">
+                    <div class="label">Alamat</div>
+                    <div class="isi">: Jl. Rambai Tengah, Banjarbaru</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Hobi</span>
-                    <span class="value">: Mendengarkan Musik</span>
+                <div class="baris">
+                    <div class="label">Hobi</div>
+                    <div class="isi">: Mendengarkan Musik</div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Email</span>
-                    <span class="value">: tyasdhiskaasaning@gmail.com</span>
+                <div class="baris">
+                    <div class="label">Email</div>
+                    <div class="isi">: tyasdhiskaasaning@gmail.com</div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Proyek Website Dhiska</p>
+        <p>© 2026 Website Biodata Dhiska</p>
     </footer>
 
 </body>

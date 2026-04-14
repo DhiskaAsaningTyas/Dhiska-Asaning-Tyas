@@ -102,19 +102,19 @@
         .label { font-weight: bold; color: var(--primary); width: 120px; }
 
         /* --- GALERI STYLE --- */
-        .galeri-grid {
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .galeri-item {
+        .gallery-item {
             overflow: hidden;
             border-radius: 15px;
             height: 250px;
         }
 
-        .galeri-item img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -122,12 +122,12 @@
             cursor: pointer;
         }
 
-        .galeri-item img:hover {
+        .gallery-item img:hover {
             transform: scale(1.1);
         }
 
-        /* --- VIDIO STYLE --- */
-        .vidio-box {
+        /* --- VIDEO STYLE --- */
+        .video-box {
             background: #000;
             border-radius: 20px;
             overflow: hidden;
@@ -135,7 +135,7 @@
             aspect-ratio: 16/9;
         }
 
-        vidio, iframe {
+        video, iframe {
             width: 100%;
             height: 100%;
             display: block;
@@ -161,7 +161,7 @@
         <a href="../index.html">⬅ KEMBALI</a>
         <a href="#biodata">BIODATA</a>
         <a href="#galeri">GALERI</a>
-        <a href="#vidio">VIDIO</a>
+        <a href="#video">VIDEO</a>
     </nav>
 
     <section id="biodata">
@@ -170,14 +170,11 @@
             <img src="https://via.placeholder.com/200" alt="Foto Profil">
             <div class="bio-details">
                 <table>
-                    <tr><td class="label">Nama</td><td>: Dhiska Asaning Tyas</td></tr>
-                    <tr><td class="label">Nim</td><td>: 2310715120007s</td></tr>
-                    <tr><td class="label">Jurusan</td><td>: Sosial Ekonomi Perikanan</td></tr>
-                    <tr><td class="label">Umur</td><td>: 20 tahun</td></tr>
-                    <tr><td class="label">Alamat</td><td>: Jl. Rambai Tengah, Banjarbaru</td></tr>
-                    <tr><td class="label">Hobi</td><td>: Mendengarkan Musik</td></tr>
-                    <tr><td class="label">Email:</td><td>: tyasdhiskaasaning@gmail.com</td></tr>
-                    
+                    <tr><td class="label">Nama</td><td>: Nama Lengkap Anda</td></tr>
+                    <tr><td class="label">Pekerjaan</td><td>: Pelajar / Developer</td></tr>
+                    <tr><td class="label">Hobi</td><td>: Coding, Desain, Musik</td></tr>
+                    <tr><td class="label">Deskripsi</td><td>: Sedang mengerjakan Tugas 1 mata kuliah pemrograman web.</td></tr>
+                </table>
             </div>
         </div>
     </section>
@@ -185,9 +182,26 @@
     <section id="galeri" style="background: #eef2f3;">
         <h1 class="section-title">Koleksi Galeri</h1>
         <div class="gallery-grid">
-            <div class="galeri-item"><jpeg=""halaman.jpeg" alt="Foto 1"></div>
-            <div class="galeri-item"><jpeg="ruangan.jpeg" alt="Foto 2"></div>
-            <div class="galeri-item"><jpeg="toilet.jpeg" alt="Foto 3"></div>
-            <div class="galeri-item"><jpeg="kamar.jpeg" alt="Foto 4"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x300?text=Foto+1" alt="Foto 1"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x300?text=Foto+2" alt="Foto 2"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x300?text=Foto+3" alt="Foto 3"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x300?text=Foto+4" alt="Foto 4"></div>
         </div>
     </section>
+
+    <section id="video">
+        <h1 class="section-title">Video Utama</h1>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p style="text-align: center; margin-top: 20px; color: #666;">
+            Video demonstrasi pengerjaan proyek Tugas 1.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Portal Tugas Saya - Terintegrasi</p>
+    </footer>
+
+</body>
+</html>

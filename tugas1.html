@@ -3,206 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas 1 - Biodata, Galeri & Video</title>
+    <title>Tugas 1 - Menu Utama</title>
     <style>
-        /* --- DASAR & RESET --- */
+        /* DASAR */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Arial, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
             background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: #333;
             min-height: 100vh;
-        }
-
-        /* --- NAVIGASI --- */
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #00f2fe;
-        }
-
-        /* --- CONTAINER UTAMA --- */
-        section {
-            padding: 100px 20px 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        .title {
+            justify-content: center;
             color: white;
-            margin-bottom: 30px;
-            font-size: 28px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* --- KARTU PUTIH (BIODATA & VIDEO) --- */
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            text-align: center;
+        h1 {
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            font-size: 2.5rem;
         }
 
-        /* Biodata Image */
-        .card img.profile {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #4facfe;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        /* Isi Biodata Sejajar */
-        .info-group {
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        .baris {
+        /* CONTAINER PILIHAN */
+        .menu-wrapper {
             display: flex;
-            margin-bottom: 12px;
-            font-size: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-
-        .label {
-            font-weight: bold;
-            color: #4facfe;
-            width: 85px;
-            flex-shrink: 0;
-        }
-
-        .isi {
-            flex: 1;
-            color: #555;
-        }
-
-        /* --- GALERI GRID --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* --- VIDEO --- */
-        .video-box {
-            width: 100%;
-            max-width: 650px;
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        footer {
-            text-align: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            font-size: 14px;
+        }
+
+        /* DESAIN KARTU PILIHAN */
+        .menu-card {
+            background: white;
+            color: #333;
+            width: 250px;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-15px);
+            border-color: #4facfe;
+            background: #f0faff;
+        }
+
+        .menu-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4facfe;
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* FOOTER */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* RESPONSIVE UNTUK HP */
+        @media (max-width: 600px) {
+            .menu-card {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="biodata.html">BIODATA</a>
-        <a href="galeri.html">GALERI</a>
-        <a href="video.html">VIDEO</a>
-    </nav>
+    <h1>Tugas 1</h1>
 
-    <section id="biodata">
-        <h1 class="title">Biodata Diri</h1>
-        <div class="card">
-            <img src="poto pp.jpeg" alt="Foto Profil" class="profile">
-            <div class="info-group">
-                <div class="baris"><div class="label">Nama</div><div class="isi">: Dhiska Asaning Tyas</div></div>
-                <div class="baris"><div class="label">NIM</div><div class="isi">: 2310715120007</div></div>
-                <div class="baris"><div class="label">Jurusan</div><div class="isi">: Sosial Ekonomi Perikanan</div></div>
-                <div class="baris"><div class="label">Umur</div><div class="isi">: 20 Tahun</div></div>
-                <div class="baris"><div class="label">Alamat</div><div class="isi">: Jl. Rambai Tengah, Banjarbaru</div></div>
-                <div class="baris"><div class="label">Hobi</div><div class="isi">: Mendengarkan Musik</div></div>
-                <div class="baris"><div class="label">Email</div><div class="isi">: tyasdhiskaasaning@gmail.com</div></div>
-            </div>
-        </div>
-    </section>
+    <div class="menu-wrapper">
+        <a href="biodata.html" class="menu-card">
+            <h2>BIODATA</h2>
+            <p>Informasi data diri lengkap</p>
+        </a>
 
-    <section id="galeri" style="background: rgba(255,255,255,0.1);">
-        <h1 class="title">Galeri Foto</h1>
-        <div class="gallery-grid">
-            <img src="halaman.jpeg" alt="Foto 1">
-            <img src="ruangan.jpeg" alt="Foto 2">
-            <img src="kamar.jpeg" alt="Foto 3">
-            <img src="toilet.jpeg" alt="Foto 3">
-        </div>
-    </section>
+        <a href="galeri.html" class="menu-card">
+            <h2>GALERI</h2>
+            <p>Koleksi dokumentasi foto</p>
+        </a>
 
-    <section id="video">
-        <h1 class="title">Koleksi Video</h1>
-        <div class="video-box">
-            <div class="video-wrapper">
-                <iframe src="Video tempat tinggal.mp4" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
+        <a href="video.html" class="menu-card">
+            <h2>VIDEO</h2>
+            <p>Konten media visual</p>
+        </a>
+    </div>
 
     <footer>
-        <p>© 2026 Website Tugas 1 - Dhiska Asaning Tyas</p>
+        <p>© 2026 Dhiska Asaning Tyas - 2310715120007</p>
     </footer>
 
 </body>

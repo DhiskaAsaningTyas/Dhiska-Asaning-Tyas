@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kumpulan Tugas Web Saya</title>
+    <title>Kumpulan Tugas Web Dhiska</title>
     <style>
+        /* BASE STYLE */
         * {
             margin: 0;
             padding: 0;
@@ -20,11 +21,12 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 800px;
-            padding: 20px;
+            max-width: 900px;
+            width: 100%;
         }
 
         h1 {
@@ -33,26 +35,31 @@
             color: #00d2ff;
         }
 
-        p {
+        .subtitle {
             margin-bottom: 40px;
             color: #adb5bd;
         }
 
+        /* GRID MENU */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
             color: white;
             transition: all 0.3s ease;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
         }
 
         .card:hover {
@@ -64,21 +71,36 @@
 
         .card h2 {
             margin-bottom: 10px;
+            font-size: 1.5rem;
         }
 
+        .card p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* STATUS BADGE */
         .status {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
             text-transform: uppercase;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             background: rgba(0, 255, 0, 0.2);
             color: #00ff00;
         }
 
-        .status.pending {
-            background: rgba(255, 255, 255, 0.1);
-            color: #888;
+        .status.process {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        /* Hover Effect for Status when Card Hovered */
+        .card:hover .status {
+            background: rgba(0, 0, 0, 0.2);
+            color: #1a1a2e;
+            border: 1px solid #1a1a2e;
         }
     </style>
 </head>
@@ -86,19 +108,31 @@
 
     <div class="container">
         <h1>Dhiska Asaning Tyas</h1>
-        <p>Selamat datang di repositori tugas mata kuliah Sistem Informasi Manajamen Perikanan.</p>
+        <p class="subtitle">Repositori Tugas Sistem Informasi Manajemen Perikanan</p>
 
         <div class="menu-grid">
             <a href="tugas1.html" class="card">
-                <h2>Tugas 1</h2>
-                <p>Website Biodata, Galeri, dan Video</p>
+                <div>
+                    <h2>Tugas 1</h2>
+                    <p>Website Biodata, Galeri, dan Video Interaktif</p>
+                </div>
                 <span class="status">Selesai</span>
             </a>
 
             <a href="tugas2.html" class="card">
-                <h2>Tugas 2</h2>
-                <p>Formulir Biografi</p>
+                <div>
+                    <h2>Tugas 2</h2>
+                    <p>Formulir Biografi & Data Keuangan</p>
+                </div>
                 <span class="status">Selesai</span>
+            </a>
+
+            <a href="sajikandata.html" class="card">
+                <div>
+                    <h2>Tugas 3</h2>
+                    <p>Penyajian Data & Tabel Dinamis</p>
+                </div>
+                <span class="status process">Sajikan Data</span>
             </a>
         </div>
     </div>

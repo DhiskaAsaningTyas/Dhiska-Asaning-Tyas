@@ -1,90 +1,38 @@
-<section id="aktivitas" class="section">
-        <div class="card">
-          <h2 class="section-title">Aktivitas & Agenda Kelompok</h2>
-          <p class="section-desc">Daftar aktivitas harian, mingguan, dan bulanan yang direncanakan maupun yang telah terlaksana.</p>
-          
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Tanggal / Waktu</th>
-                  <th>Nama Aktivitas</th>
-                  <th>Kategori</th>
-                  <th>Keterangan / Lokasi</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>05 Juni 2026</strong><br><small>09:00 WITA</small></td>
-                  <td><strong>Rapat Pleno & Evaluasi Kas Bulanan</strong></td>
-                  <td>Bulanan</td>
-                  <td>Balai Pertemuan Nelayan Desa</td>
-                  <td><span class="badge" style="background: #e0f2fe; color: #0369a1;">Mendatang</span></td>
-                </tr>
-                <tr>
-                  <td><strong>02 Juni 2026</strong><br><small>07:00 WITA</small></td>
-                  <td><strong>Kerja Bakti Perawatan Mesin Perahu Kolektif</strong></td>
-                  <td>Mingguan</td>
-                  <td>Dermaga Barat KUB</td>
-                  <td><span class="badge" style="background: #fef3c7; color: #d97706;">Persiapan</span></td>
-                </tr>
-                <tr>
-                  <td><strong>28 Mei 2026</strong><br><small>14:00 WITA</small></td>
-                  <td><strong>Pelatihan Jaring dan Alat Tangkap Ramah Lingkungan</strong></td>
-                  <td>Khusus</td>
-                  <td>Sekretariat Portal KUB</td>
-                  <td><span class="badge">Selesai</span></td>
-                </tr>
-                <tr>
-                  <td><strong>25 Mei 2026</strong><br><small>05:30 WITA</small></td>
-                  <td><strong>Operasi Tangkap Bersama (Musim Tuna)</strong></td>
-                  <td>Harian</td>
-                  <td>Zona Tangkap WPP-716</td>
-                  <td><span class="badge">Selesai</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+import docx
+import pypdf
+import os
 
-        <div class="card">
-          <h2 class="section-title">Dokumentasi Kegiatan Terbaru</h2>
-          <p class="section-desc">Kumpulan foto dan laporan singkat pelaksanaan aktivitas kelompok di lapangan.</p>
-          
-          <div class="cards">
-            <div class="fish-card">
-              <div style="background: #34495e; height: 180px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                <i class="fa-solid fa-graduation-cap style-icon" style="font-size: 48px; opacity: 0.7;"></i>
-              </div>
-              <div class="body">
-                <span class="badge" style="margin-bottom: 8px;">28 Mei 2026</span>
-                <h4>Pelatihan Alat Tangkap Baru</h4>
-                <p>Edukasi penggunaan jaring lingkar generasi terbaru untuk meningkatkan efisiensi tangkapan tanpa merusak ekosistem terumbu karang.</p>
-              </div>
-            </div>
+def read_docx(file_path):
+    doc = docx.Document(file_path)
+    fullText = []
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                fullText.append(cell.text)
+    return '\n'.join(fullText)
 
-            <div class="fish-card">
-              <div style="background: #16a085; height: 180px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                <i class="fa-solid fa-handshake style-icon" style="font-size: 48px; opacity: 0.7;"></i>
-              </div>
-              <div class="body">
-                <span class="badge" style="margin-bottom: 8px;">15 Mei 2026</span>
-                <h4>Sosialisasi Program Subsidi Solar</h4>
-                <p>Pertemuan bersama Dinas Kelautan dan Perikanan mengenai alokasi kuota solar bersubsidi untuk seluruh anggota aktif KUB.</p>
-              </div>
-            </div>
+def read_pdf(file_path):
+    reader = pypdf.PdfReader(file_path)
+    fullText = []
+    for page in reader.pages:
+        fullText.append(page.extract_text())
+    return '\n'.join(fullText)
 
-            <div class="fish-card">
-              <div style="background: #2980b9; height: 180px; display: flex; align-items: center; justify-content: center; color: #fff;">
-                <i class="fa-solid fa-anchor style-icon" style="font-size: 48px; opacity: 0.7;"></i>
-              </div>
-              <div class="body">
-                <span class="badge" style="margin-bottom: 8px;">10 Mei 2026</span>
-                <h4>Pengecekan Fasilitas Cold Storage</h4>
-                <p>Aktivitas pemeliharaan berkala unit pendingin bersama untuk memastikan kesegaran komoditas ikan hasil tangkapan nelayan tetap terjaga.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+files = {
+    'docx_intimung': 'Uraian Profil KUB Intimung Taka Berdasarkan Struktur Administrasi Kelompok.docx',
+    'pdf_pengelolaan': 'Pengelolaan_Program_Kelompok_Usaha_Bersa.pdf',
+    'pdf_watusa': 'PROFIL KUB DESA WATUSA KECAMATAN PURIALA KABUPATEN KONAWE (1).pdf',
+    'pdf_angsa_laut': '705194978-PROFIL-KUB-ANGSA-LAUT-01.pdf'
+}
+
+for name, path in files.items():
+    if os.path.exists(path):
+        print(f"=== {name} (Length: {len(path)}) ===")
+        if path.endswith('.docx'):
+            text = read_docx(path)
+        else:
+            text = read_pdf(path)
+        print(text[:1000]) # first 1000 chars
+        print("...\n")

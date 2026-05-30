@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 05 - Aktivitas Kelompok</title>
+    <style>
+        /* BASE STYLE & RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background: #111424;
+            background: linear-gradient(to bottom, #1a1a3a, #111424);
+            color: #ffffff;
+            min-height: 100vh;
+            padding-top: 80px; /* Ruang untuk navbar */
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 12, 41, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #00d2ff;
+        }
+
+        /* CONTAINER UTAMA */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #00d2ff, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header-section p {
+            color: #a0a5c1;
+            font-size: 1.1rem;
+        }
+
+        /* LAYOUT GRID (Dua Kolom: Anggota Kelompok & Tabel Aktivitas) */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 850px) {
+            .dashboard-grid {
+                grid-template-columns: 320px 1fr; /* Kiri kecil, kanan lebar */
+            }
+        }
+
+        /* CARD STYLE */
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #00d2ff;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* DAFTAR ANGGOTA KELOMPOK */
+        .member-list {
+            list-style: none;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .member-item:last-child {
+            border-bottom: none;
+        }
+
+        .member-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #111424;
+            font-size: 1.1rem;
+        }
+
+        .member-info h4 {
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        .member-info p {
+            font-size: 0.8rem;
+            color: #a0a5c1;
+        }
+
+        /* TABEL AKTIVITAS */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d2ff;
+            padding: 15px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.95rem;
+            color: #e0e0e0;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* BADGE STATUS */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .badge.done {
+            background: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .badge.progress {
+            background: rgba(241, 196, 15, 0.15);
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        .badge.pending {
+            background: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555870;
+            font-size: 0.85rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="tugas1.html">TUGAS 1</a>
+        <a href="tugas2.html">TUGAS 2</a>
+        <a href="sajikandata.html">TUGAS 3</a>
+        <a href="tugas5.html" class="active">TUGAS 5</a>
+    </nav>
+
+    <div class="container">
+        
+        <div class="header-section">
+            <h1>Aktivitas Kelompok</h1>
+            <p>Manajemen Proyek dan Pembagian Tugas Kelompok Web</p>
+        </div>
+
+        <div class="dashboard-grid">
+            
+            <div class="card">
+                <div class="card-title">👥 Anggota Kelompok</div>
+                <ul class="member-list">
+                    <li class="member-item">
+                        <div class="member-avatar">DA</div>
+                        <div class="member-info">
+                            <h4>Dhiska Asaning Tyas</h4>
+                            <p>NIM: 2310715120007</p>
+                        </div>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-avatar">A1</div>
+                        <div class="member-info">
+                            <h4>Nama Anggota 2</h4>
+                            <p>NIM: 231071512XXXX</p>
+                        </div>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-avatar">A2</div>
+                        <div class="member-info">
+                            <h4>Nama Anggota 3</h4>
+                            <p>NIM: 231071512XXXX</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📝 Log Aktivitas & Progress</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">No</th>
+                                <th>Aktivitas / Jobdesk</th>
+                                <th>Penanggung Jawab</th>
+                                <th style="width: 140px;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Perencanaan konsep awal & pembuatan repositori GitHub</td>
+                                <td>Dhiska Asaning Tyas</td>
+                                <td><span class="badge done">Selesai</span></td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Penyusunan kode Struktur HTML Utama (Struktur Form & Media)</td>
+                                <td>Anggota 2</td>
+                                <td><span class="badge done">Selesai</span></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Perancangan CSS UI/UX Modern & Responsif</td>
+                                <td>Dhiska Asaning Tyas</td>
+                                <td><span class="badge progress">Proses</span></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Integrasi Validasi JavaScript pada Formulir Keuangan</td>
+                                <td>Anggota 3</td>
+                                <td><span class="badge pending">Belum</span></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>Tahap Akhir / Evaluasi dan Hosting Ke GitHub Pages</td>
+                                <td>Semua Anggota</td>
+                                <td><span class="badge pending">Belum</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Kelompok Dhiska - Sistem Informasi Manajemen Perikanan
+    </footer>
+
+</body>
+</html>

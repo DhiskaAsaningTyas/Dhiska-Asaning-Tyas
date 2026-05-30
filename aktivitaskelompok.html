@@ -19,14 +19,12 @@ def read_pdf(file_path):
     for page in reader.pages:
         fullText.append(page.extract_text())
     return '\n'.join(fullText)
-
 files = {
     'docx_intimung': 'Uraian Profil KUB Intimung Taka Berdasarkan Struktur Administrasi Kelompok.docx',
     'pdf_pengelolaan': 'Pengelolaan_Program_Kelompok_Usaha_Bersa.pdf',
     'pdf_watusa': 'PROFIL KUB DESA WATUSA KECAMATAN PURIALA KABUPATEN KONAWE (1).pdf',
     'pdf_angsa_laut': '705194978-PROFIL-KUB-ANGSA-LAUT-01.pdf'
 }
-
 for name, path in files.items():
     if os.path.exists(path):
         print(f"=== {name} (Length: {len(path)}) ===")

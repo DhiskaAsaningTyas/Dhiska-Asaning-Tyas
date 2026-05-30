@@ -1,34 +1,21 @@
-import docx
 import pypdf
 import os
-def read_docx(file_path):
-    doc = docx.Document(file_path)
-    fullText = []
-    for para in doc.paragraphs:
-        fullText.append(para.text)
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                fullText.append(cell.text)
-    return '\n'.join(fullText)
-def read_pdf(file_path):
-    reader = pypdf.PdfReader(file_path)
-    fullText = []
-    for page in reader.pages:
-        fullText.append(page.extract_text())
-    return '\n'.join(fullText)
-files = {
-    'docx_intimung': 'Uraian Profil KUB Intimung Taka Berdasarkan Struktur Administrasi Kelompok.docx',
-    'pdf_pengelolaan': 'Pengelolaan_Program_Kelompok_Usaha_Bersa.pdf',
-    'pdf_watusa': 'PROFIL KUB DESA WATUSA KECAMATAN PURIALA KABUPATEN KONAWE (1).pdf',
-    'pdf_angsa_laut': '705194978-PROFIL-KUB-ANGSA-LAUT-01.pdf'
-}
-for name, path in files.items():
-    if os.path.exists(path):
-        print(f"=== {name} (Length: {len(path)}) ===")
-        if path.endswith('.docx'):
-            text = read_docx(path)
-        else:
-            text = read_pdf(path)
-        print(text[:1000]) # first 1000 chars
-        print("...\n")
+
+files = [
+    "Pengelolaan_Program_Kelompok_Usaha_Bersa.pdf",
+    "516615041-Profil-Kelompok-KUB-Kabupaten.pdf",
+    "705194978-PROFIL-KUB-ANGSA-LAUT-01.pdf",
+    "625321579-1-Profil-Kelompok-Kub-Intimung-Taka-PDF.pdf"
+]
+
+for f in files:
+    if os.path.exists(f):
+        print(f"File {f} exists.")
+        with open(f, 'rb') as pdf_file:
+            reader = pypdf.PdfReader(pdf_file)
+            print(f"Pages: {len(reader.pages)}")
+            # print first page text snippet
+            print(reader.pages[0].extract_text()[:300])
+            print("-" * 20)
+    else:
+        print(f"File {f} does not exist.")

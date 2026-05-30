@@ -3,67 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir dan Data Spreadsheet</title>
+    <title>Dashboard Hub - Form, Sheet & Looker</title>
     <style>
+        /* Fitur scroll halus saat menu navigasi diklik */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 90px 20px 40px 20px; /* Padding atas disesuaikan agar tidak tertutup navbar */
             background-color: #f0f2f5;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+        
+        /* Gaya Navigasi (Navbar) */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #1a73e8; /* Warna biru khas Google */
+        }
+
+        /* Container Konten */
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px; /* Diperlebar sedikit agar Looker Studio & Sheet lebih lega */
             background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
             box-sizing: border-box;
         }
         h2 {
             text-align: center;
             color: #333333;
-            margin-bottom: 20px;
+            margin-top: 0;
+            margin-bottom: 25px;
             border-bottom: 2px solid #e4e6eb;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            font-size: 20px;
         }
-        .form-wrapper {
+        
+        /* Wrapper Iframe Responsif */
+        .iframe-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
             overflow: hidden;
         }
-        /* Membuat spreadsheet responsif penuh */
-        .sheet-wrapper iframe {
+        .iframe-wrapper iframe {
             width: 100%;
-            height: 600px; /* Tinggi spreadsheet */
+        }
+
+        /* Khusus Spreadsheet dan Looker agar tingginya proporsional */
+        .sheet-wrapper iframe {
+            height: 600px;
             border: 1px solid #e4e6eb;
             border-radius: 8px;
         }
-        /* Penyesuaian form Google untuk layar kecil */
+        .looker-wrapper iframe {
+            height: 550px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* Penyesuaian khusus untuk Google Form pada layar smartphone */
         @media (max-width: 640px) {
+            nav {
+                gap: 15px;
+            }
+            nav a {
+                font-size: 12px;
+            }
             .form-wrapper iframe {
                 width: 100%;
+                height: 1230px; /* Tetap menjaga tinggi default form */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <nav>
+        <a href="#bagian-form">Isi Formulir</a>
+        <a href="#bagian-sheet">Data Spreadsheet</a>
+        <a href="#bagian-looker">Laporan Looker Studio</a>
+    </nav>
+
+    <div id="bagian-form" class="container">
         <h2>Silakan Isi Formulir</h2>
-        <div class="form-wrapper">
+        <div class="iframe-wrapper form-wrapper">
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLuYYo1_by_THjP6Nhukn-h_JzDlTREVJIY7jbEBqYu8cB9w/viewform?embedded=true" width="640" height="1230" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         </div>
     </div>
 
-    <div class="container sheet-wrapper">
+    <div id="bagian-sheet" class="container">
         <h2>Hasil Data Spreadsheet</h2>
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM11fTl2P00gavAILiYFHLVMArgpnh_3rlBSjcxLQk063Z5JkbRT9-X9UaqSRh2y2Lf9OBhRTA8TAm/pubhtml?widget=true&amp;headers=false"></iframe>
+        <div class="iframe-wrapper sheet-wrapper">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM11fTl2P00gavAILiYFHLVMArgpnh_3rlBSjcxLQk063Z5JkbRT9-X9UaqSRh2y2Lf9OBhRTA8TAm/pubhtml?widget=true&amp;headers=false"></iframe>
+        </div>
+    </div>
+
+    <div id="bagian-looker" class="container">
+        <h2>Sajian Data Looker Studio</h2>
+        <div class="iframe-wrapper looker-wrapper">
+            <iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/e1184f6e-8a87-4fda-9bcd-a2d9a1491307/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
     </div>
 
 </body>

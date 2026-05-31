@@ -32,6 +32,7 @@
             gap: 25px;
             padding: 15px 0;
             z-index: 1000;
+            flex-wrap: wrap; /* Agar menu tidak terpotong di layar kecil */
         }
         nav a {
             text-decoration: none;
@@ -78,7 +79,7 @@
             width: 100%;
         }
 
-        /* Khusus Spreadsheet dan Looker agar tingginya proporsional */
+        /* Khusus Spreadsheet, Looker, dan Kepuasan agar tingginya proporsional */
         .sheet-wrapper iframe {
             height: 600px;
             border: 1px solid #e4e6eb;
@@ -89,11 +90,16 @@
             border: 0;
             border-radius: 8px;
         }
+        .kepuasan-wrapper iframe {
+            height: 2321px; /* Mengikuti tinggi default form kepuasan */
+            border: 0;
+        }
 
         /* Penyesuaian khusus untuk Google Form pada layar smartphone */
         @media (max-width: 640px) {
             nav {
                 gap: 15px;
+                padding: 10px;
             }
             nav a {
                 font-size: 12px;
@@ -101,6 +107,10 @@
             .form-wrapper iframe {
                 width: 100%;
                 height: 1230px; /* Tetap menjaga tinggi default form */
+            }
+            .kepuasan-wrapper iframe {
+                width: 100%;
+                height: 2321px;
             }
         }
     </style>
@@ -110,13 +120,13 @@
     <nav>
         <a href="#bagian-form">Isi Formulir</a>
         <a href="#bagian-sheet">Data Spreadsheet</a>
-        <a href="#bagian-looker">Laporan Looker Studio</a>
-    </nav>
+        <a href="#bagian-looker">Laporan Looker</a>
+        <a href="#bagian-kepuasan">Tingkat Kepuasan</a> </nav>
 
     <div id="bagian-form" class="container">
         <h2>Silakan Isi Formulir</h2>
         <div class="iframe-wrapper form-wrapper">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLuYYo1_by_THjP6Nhukn-h_JzDlTREVJIY7jbEBqYu8cB9w/viewform?embedded=true" width="640" height="1230" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLuYYo1_by_THjP6Nhukn-h_JzDlTREVJIY7jbEBqYu8cB9w/viewform?embedded=true" height="1230" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         </div>
     </div>
 
@@ -130,9 +140,16 @@
     <div id="bagian-looker" class="container">
         <h2>Sajian Data Looker Studio</h2>
         <div class="iframe-wrapper looker-wrapper">
-            <iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/e1184f6e-8a87-4fda-9bcd-a2d9a1491307/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+            <iframe src="https://datastudio.google.com/embed/reporting/e1184f6e-8a87-4fda-9bcd-a2d9a1491307/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
         </div>
     </div>
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7euSbsvP_r2RyfhGU_Jp3aPthHtznSF1CkQBQIabHNmLR2A/viewform?embedded=true" width="640" height="2321" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+
+    <div id="bagian-kepuasan" class="container">
+        <h2>Form Tingkat Kepuasan Aktivitas Kelompok</h2>
+        <div class="iframe-wrapper kepuasan-wrapper">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7euSbsvP_r2RyfhGU_Jp3aPthHtznSF1CkQBQIabHNmLR2A/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        </div>
+    </div>
+
 </body>
 </html>

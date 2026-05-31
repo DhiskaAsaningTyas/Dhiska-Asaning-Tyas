@@ -3,6 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Aktivitas Kelompok Usaha Bersama (KUB) Perikanan</title>
+    <style>
+        :root {
+            --primary-color: #0f4c81;
+            --secondary-color: #1f7a8c;
+            --accent-color: #e0f2f1;
+            --text-dark: #2d3748;
+            --text-light: #ffffff;
+            --bg-light: #f4f7f6;
+            --border-color: #cbd5e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--text-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 24pt;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--secondary-color);
+            font-size: 11pt;
+            font-style: italic;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 10px;
+            margin: 25px 0 15px 0;
+            font-size: 14pt;
+        }
+
+        /* Styling Tabel Ringkasan */
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 10pt;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* KUB Detail Cards */
+        .kub-grid {
+            display: block;
+        }
+
+        .kub-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .kub-card h3 {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            font-size: 12pt;
+        }
+
+        .meta-info {
+            font-size: 9.5pt;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .bullet-list {
+            list-style-type: square;
+            margin-left: 20px;
+            padding-left: 5px;
+            font-size: 10pt;
+        }
+
+        .bullet-list li {
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 9pt;
+            color: #94a3b8;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>MATRIKS AKTIVITAS KELOMPOK</h1>
+        <h2>4 Kelompok Usaha Bersama (KUB) Binaan Kementerian Kelautan dan Perikanan</h2>
+        <p>Sumber Data: Profil Kelompok Perikanan Resmi (Penyuluh Kelautan & Perikanan)</p>
+    </header>
+
+    <h2 class="section-title">I. Tabel Ringkasan Aktivitas & Karakteristik KUB</h2>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama KUB / Wilayah</th>
+                    <th>Komoditas Utama</th>
+                    <th>Alat Tangkap / Armada</th>
+                    <th>Aktivitas Utama Kelompok</th>
+                    <th>Frekuensi Pertemuan Rutin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>KUB Intimung Taka</strong><br>Desa Bunyu Barat, Bulungan, Kaltara [cite: 7, 8]</td>
+                    <td>Kerapu, Kakap, Selar, Ekor Kuning, Bandeng, Belanak, Lobster, Senangin, Kurou [cite: 28]</td>
+                    <td>Gill Nets, Trammel Nets, Pancing Ulur, Pancing Tonda, Rumpon, Bubu (Armada: Long Boat) [cite: 28, 29]</td>
+                    <td>Penangkapan ikan laut ramah lingkungan, peningkatan teknologi tangkap, pemecahan masalah operasional/modal bersama[cite: 8, 10, 14].</td>
+                    <td><em>Rembuk kelompok situasional / koordinasi pendampingan</em> [cite: 8, 10]</td>
+                </tr>
+                <tr>
+                    <td><strong>KUB Angsa Laut 01</strong><br>Kelurahan Samkai, Merauke, Papua Selatan [cite: 181, 182]</td>
+                    <td>Ikan Gulama, Kerapu, Tenggiri, Layar, Duri, Kuru, Koniting, Ikan Campur [cite: 195]</td>
+                    <td>Jaring 7 Mata, Jaring 5 Mata, Trammel Net (Armada: Perahu Semang 15 PK) [cite: 197]</td>
+                    <td>Operasi penangkapan bersama di laut, kolektivitas pemasaran hasil tangkapan, serta peningkatan kapasitas SDM lewat pelatihan dan penyuluhan[cite: 183, 184].</td>
+                    <td><strong>2 - 3 kali / bulan</strong> (Internal)<br><strong>2 kali / bulan</strong> (Bersama Penyuluh) [cite: 202]</td>
+                </tr>
+                <tr>
+                    <td><strong>KUB Usaha Nelayan</strong><br>Desa Watusa, Konawe, Sulawesi Tenggara [cite: 385, 387]</td>
+                    <td>Ikan Rawa / Air Tawar [cite: 387, 391]</td>
+                    <td>Alat tangkap tradisional Perairan Umum Daratan (PUD) [cite: 391]</td>
+                    <td>Penangkapan ikan di Perairan Umum Daratan (Rawa Aopa), pengelolaan manajemen kelompok, optimalisasi akses pemasaran[cite: 391, 393].</td>
+                    <td><em>Musyawarah berkala / koordinasi program kerja desa</em> [cite: 389, 390]</td>
+                </tr>
+                <tr>
+                    <td><strong>KUB Sumber Makmur</strong><br>Desa Klampis Timur, Bangkalan, Jawa Timur [cite: 529, 530]</td>
+                    <td>Ikan Laut Pesisir [cite: 531]</td>
+                    <td>Jaring Payang [cite: 532]</td>
+                    <td>Operasi penangkapan ikan pesisir menggunakan jaring payang, pelegalan kelompok, koordinasi bantuan armada/sarana modern dengan Dinas Perikanan[cite: 532, 533, 537].</td>
+                    <td><em>Pertemuan kelompok bulanan / rembuk nelayan</em> [cite: 537]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="section-title">II. Profil Detil Aktivitas & Program Kerja Kelompok</h2>
+    
+    <div class="kub-grid">
+        <div class="kub-card">
+            <h3>1. KUB Intimung Taka (Bulungan, Kalimantan Utara) <span class="badge">Kelas: Pemula</span></h3>
+            <div class="meta-info">No Reg: 1.2.65.01.0814.0914 | Penyuluh: Hariyono, S.Pi | Jumlah Anggota: 12 Nelayan [cite: 1, 24]</div>
+            <ul class="bullet-list">
+                <li><strong>Konsolidasi Organisasi:</strong> Dibentuk sejak 16 Agustus 2014 untuk mengubah pola kerja nelayan dari individual menjadi kelompok guna mengatasi keterbatasan modal dan produktivitas tradisional[cite: 8, 10].</li>
+                <li><strong>Aktivitas Utama Usaha:</strong> Melakukan eksploitasi penangkapan komoditas bernilai tinggi (seperti Kerapu dan Lobster) dengan memanfaatkan posisi strategis Pulau Bunyu di delta sungai Sesayap dan Laut Sulawesi[cite: 6, 28].</li>
+                <li><strong>Edukasi Lingkungan:</strong> Membina seluruh anggota untuk mengaplikasikan alat tangkap ramah lingkungan (Gill Net, Pancing, Bubu) demi kelestarian laut jangka panjang[cite: 12, 28].</li>
+                <li><strong>Pengembangan Kapasitas:</strong> Berperan aktif sebagai basis pendampingan program bantuan pemerintah serta pelatihan perawatan mesin penggerak kapal perikanan (Satminkal BPPP Bitung).</li>
+            </ul>
+        </div>
+
+        <div class="kub-card">
+            <h3>2. KUB Angsa Laut 01 (Merauke, Papua Selatan) <span class="badge">Kelas: Pemula</span></h3>
+            <div class="meta-info">No Reg: 1.2.93.01.0223.0223 | Penyuluh: Ardin Arafah Randan Sau, S.St.Pi | Jumlah Anggota: 11 Nelayan [cite: 181, 189]</div>
+            <ul class="bullet-list">
+                <li><strong>Aktivitas Rembuk Rutin:</strong> Memiliki agenda internal yang sangat aktif berupa pertemuan rutin/rembuk kelompok sebanyak 2-3 kali sebulan serta bimbingan teknis bersama penyuluh bantu 2 kali sebulan[cite: 202].</li>
+                <li><strong>Solusi Pemasaran Kolektif:</strong> Mengatasi fluktuasi harga tengkulak dengan mengoordinasikan sistem penjualan hasil tangkapan laut secara bersama agar pendapatan merata[cite: 182, 183].</li>
+                <li><strong>Sistem Bagi Hasil & Inventarisasi:</strong> Mengelola pemanfaatan aset bersama secara bergantian (misalnya penggunaan Perahu Semang 15 PK milik Muchsin beserta jaringnya) untuk menjaga produktivitas tahunan anggota[cite: 197, 201].</li>
+                <li><strong>Peningkatan Keterampilan:</strong> Menjadikan kelompok sebagai wadah penyaluran pelatihan perikanan dari Balai Pelatihan Penyuluhan Perikanan (BPPP) Ambon[cite: 181, 184].</li>
+            </ul>
+        </div>
+
+        <div class="kub-card">
+            <h3>3. KUB Usaha Nelayan (Konawe, Sulawesi Tenggara) <span class="badge">Kelas: Pemula</span></h3>
+            <div class="meta-info">No Reg: 1.2.74.02.17.0215.0516 | Penyuluh: Suhardin, S.ST.Pi | Jumlah Anggota: 10 Nelayan [cite: 385, 386, 390]</div>
+            <ul class="bullet-list">
+                <li><strong>Aktivitas Spesifik (PUD):</strong> Berbeda dengan kelompok lain, aktivitas utama kelompok ini berfokus pada penangkapan ikan di Perairan Umum Daratan, khususnya wilayah ekosistem Rawa Aopa[cite: 391].</li>
+                <li><strong>Manajemen Produksi Mandiri:</strong> Setiap anggota mencatat kontribusi produksi ikan rawa berkala, dengan total rata-rata produksi mencapai 744 hingga 1.296 kg per nelayan dalam setahun.</li>
+                <li><strong>Aktivitas Kelembagaan:</strong> Menyelenggarakan forum musyawarah bersama Kepala Desa Watusa dan tokoh masyarakat untuk sinkronisasi program kerja perikanan darat yang berkelanjutan[cite: 389].</li>
+                <li><strong>Misi Konservasi:</strong> Mengedukasi para penangkap ikan agar memaksimalkan potensi alam rawa tanpa merusak kelestarian lingkungan air tawar[cite: 394].</li>
+            </ul>
+        </div>
+
+        <div class="kub-card">
+            <h3>4. KUB Sumber Makmur (Bangkalan, Jawa Timur) <span class="badge">Kelas: Pemula</span></h3>
+            <div class="meta-info">No Reg: 411.61/022/433.105/2013 | Penyuluh: Moh. Sulton, S.Si | Jumlah Anggota: Nelayan Pesisir [cite: 529, 544]</div>
+            <ul class="bullet-list">
+                <li><strong>Kolektivitas Operasional:</strong> Beraktivitas menggunakan jenis jaring besar (jaring payang) yang membutuhkan kerja sama tim yang solid saat melaut di ekosistem pesisir Klampis Timur[cite: 531, 532, 533].</li>
+                <li><strong>Aktivitas Advokasi & Legalitas:</strong> Mengadakan rembuk bersama untuk melegalkan kelompok ke Dinas Perikanan Kabupaten Bangkalan (dikukuhkan pada 16 Januari 2013) agar memperoleh kekuatan hukum[cite: 537].</li>
+                <li><strong>Modernisasi Armada:</strong> Melakukan sosialisasi dan komunikasi intensif dengan kedinasan terkait guna memecahkan tantangan keterbatasan biaya dan pengadaan fasilitas perahu tangkap yang lebih modern[cite: 536, 537].</li>
+                <li><strong>Membangun Semangat Bahari:</strong> Menggerakkan partisipasi aktif nelayan lokal dalam menjaga kebersihan kawasan pesisir dan kelestarian biota laut sekitar Madura[cite: 538].</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Laporan Konsolidasi KUB Perikanan Tangkap Indonesia. All Rights Reserved.</p>
+    </footer>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Hub - Form, Sheet & Looker</title>
     <style>
         /* Fitur scroll halus saat menu navigasi diklik */

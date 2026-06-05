@@ -4,112 +4,378 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Hub - Form, Sheet & Looker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
-        /* Fitur scroll halus saat menu navigasi diklik */
+        /* ==========================================================================
+           VARIABLE & BASE STYLES
+           ========================================================================== */
+        :root {
+            --bg: #f4f7f6;
+            --card: #ffffff;
+            --primary: #1abc9c;
+            --primary-dark: #16a085;
+            --sidebar: #2c3e50;
+            --sidebar-dark: #1a252f;
+            --text: #2d3436;
+            --muted: #636e72;
+            --line: #e5e7eb;
+            --shadow: 0 10px 30px rgba(0,0,0,.08);
+            --radius: 18px;
+            --sidebar-w: 260px;
+            --sidebar-c: 76px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 90px 20px 40px 20px; /* Padding atas disesuaikan agar tidak tertutup navbar */
-            background-color: #f0f2f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        /* Gaya Navigasi (Navbar) */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 15px 0;
-            z-index: 1000;
-            flex-wrap: wrap; /* Agar menu tidak terpotong di layar kecil */
-        }
-        nav a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #1a73e8; /* Warna biru khas Google */
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(26,188,156,.10), transparent 30%),
+                radial-gradient(circle at right top, rgba(52,152,219,.09), transparent 26%),
+                var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* Container Konten */
-        .container {
-            width: 100%;
-            max-width: 800px; /* Diperlebar sedikit agar Looker Studio & Sheet lebih lega */
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            box-sizing: border-box;
+        /* ==========================================================================
+           LAYOUT STRUCTURE
+           ========================================================================== */
+        .layout {
+            display: flex;
+            min-height: 100vh;
         }
-        h2 {
+
+        .main {
+            margin-left: var(--sidebar-c);
+            width: calc(100% - var(--sidebar-c));
+            padding: 25px;
+            transition: margin-left .3s ease, width .3s ease;
+        }
+
+        .sidebar.open ~ .main,
+            .sidebar:hover ~ .main {
+            margin-left: var(--sidebar-w);
+            width: calc(100% - var(--sidebar-w));
+        }
+
+        /* ==========================================================================
+           SIDEBAR STYLES
+           ========================================================================== */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 60;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 14px;
+            background: var(--sidebar-dark);
+            color: #fff;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .sidebar {
+            width: var(--sidebar-c);
+            background: linear-gradient(180deg, var(--sidebar) 0%, #233140 100%);
+            color: #ecf0f1;
+            position: fixed;
+            inset: 0 auto 0 0;
+            z-index: 50;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform .3s ease, width .3s ease;
+        }
+
+        .sidebar.open,
+            .sidebar:hover {
+            width: var(--sidebar-w);
+        }
+
+        .brand {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 18px;
+            background: var(--sidebar-dark);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            white-space: nowrap;
+        }
+
+        .brand i {
+            color: var(--primary);
+            font-size: 24px;
+            min-width: 28px;
             text-align: center;
-            color: #333333;
-            margin-top: 0;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #e4e6eb;
-            padding-bottom: 12px;
-            font-size: 20px;
+        }
+
+        .brand h2 {
+            font-size: 16px;
+            font-weight: 700;
+            opacity: 0;
+            transition: .25s ease;
+        }
+
+        .sidebar.open .brand h2,
+            .sidebar:hover .brand h2 {
+            opacity: 1;
+        }
+
+        /* Tambahan Style khusus Tombol Beranda Utama di Sidebar */
+        .btn-sidebar-home {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 12px 10px 6px;
+            padding: 14px;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: .25s ease;
+            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.25);
         }
         
-        /* Wrapper Iframe Responsif */
+        .btn-sidebar-home i {
+            width: 28px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .btn-sidebar-home:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 6px 20px rgba(22, 160, 133, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 6px 0 12px;
+        }
+
+        .menu-item {
+            margin: 6px 10px;
+        }
+
+        .menu-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border: none;
+            background: transparent;
+            color: #cbd5e1;
+            cursor: pointer;
+            border-radius: 14px;
+            transition: .25s ease;
+            font: inherit;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .menu-toggle i {
+            width: 28px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .menu-label {
+            opacity: 0;
+            transition: .25s ease;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .sidebar.open .menu-label,
+            .sidebar:hover .menu-label {
+            opacity: 1;
+        }
+
+        .menu-toggle:hover,
+            .menu-toggle.active {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* ==========================================================================
+           TOPBAR & CARDS STYLES
+           ========================================================================== */
+        .topbar {
+            background: rgba(255,255,255,.72);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,.7);
+            box-shadow: var(--shadow);
+            border-radius: 22px;
+            padding: 18px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .topbar h1 {
+            font-size: 22px;
+            color: #1f2d3d;
+            margin-bottom: 4px;
+        }
+
+        .topbar p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Tambahan Style Tombol Beranda di Topbar */
+        .btn-topbar-home {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: var(--sidebar);
+            border: 1px solid var(--line);
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .btn-topbar-home:hover {
+            background: var(--sidebar);
+            color: #fff;
+            border-color: var(--sidebar);
+        }
+
+        .container {
+            width: 100%;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,.6);
+            padding: 25px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #213547;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e4e6eb;
+            padding-bottom: 12px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================================
+           RESPONSIVE IFRAME DEVELOPMENTS
+           ========================================================================== */
         .iframe-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
             overflow: hidden;
         }
+        
         .iframe-wrapper iframe {
             width: 100%;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
-        /* Khusus Spreadsheet, Looker, dan Kepuasan agar tingginya proporsional */
+        .form-wrapper iframe {
+            height: 1230px;
+            border: 0;
+        }
+
         .sheet-wrapper iframe {
             height: 600px;
-            border: 1px solid #e4e6eb;
-            border-radius: 8px;
+            border: 1px solid var(--line);
         }
+
         .looker-wrapper iframe {
             height: 550px;
             border: 0;
-            border-radius: 8px;
         }
+
         .kepuasan-wrapper iframe {
-            height: 2321px; /* Mengikuti tinggi default form kepuasan */
+            height: 2321px;
             border: 0;
         }
 
-        /* Penyesuaian khusus untuk Google Form pada layar smartphone */
-        @media (max-width: 640px) {
-            nav {
-                gap: 15px;
-                padding: 10px;
+        /* ==========================================================================
+           RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
             }
-            nav a {
-                font-size: 12px;
+            
+            .sidebar {
+                transform: translateX(-100%);
+                width: var(--sidebar-w);
             }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main,
+            .sidebar.open ~ .main,
+            .sidebar:hover ~ .main {
+                margin-left: 0;
+                width: 100%;
+                padding: 80px 14px 14px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 14px;
+            }
+
+            .btn-topbar-home {
+                width: 100%;
+                justify-content: center;
+                margin-top: 5px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+            
             .form-wrapper iframe {
-                width: 100%;
-                height: 1230px; /* Tetap menjaga tinggi default form */
+                height: 1230px;
             }
+            
             .kepuasan-wrapper iframe {
-                width: 100%;
                 height: 2321px;
             }
         }
@@ -117,40 +383,109 @@
 </head>
 <body>
 
-    <nav>
-        <a href="#bagian-form">Isi Formulir</a>
-        <a href="#bagian-sheet">Data Spreadsheet</a>
-        <a href="#bagian-looker">Laporan Looker</a>
-        <a href="#bagian-kepuasan">Tingkat Kepuasan</a> </nav>
+    <div class="layout">
+        <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
 
-    <div id="bagian-form" class="container">
-        <h2>Silakan Isi Formulir</h2>
-        <div class="iframe-wrapper form-wrapper">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLuYYo1_by_THjP6Nhukn-h_JzDlTREVJIY7jbEBqYu8cB9w/viewform?usp=sharing&ouid=104419044926629108976" height="1230" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-        </div>
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h2>Dashboard Hub</h2>
+            </div>
+
+            <a href="index.html" class="btn-sidebar-home">
+                <i class="fa-solid fa-house"></i>
+                <span class="menu-label">Beranda Utama</span>
+            </a>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="#bagian-form" class="menu-toggle active" onclick="setActiveLink(this)">
+                        <i class="fa-solid fa-wpforms"></i>
+                        <span class="menu-label">Isi Formulir</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#bagian-sheet" class="menu-toggle" onclick="setActiveLink(this)">
+                        <i class="fa-solid fa-table"></i>
+                        <span class="menu-label">Data Spreadsheet</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#bagian-looker" class="menu-toggle" onclick="setActiveLink(this)">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="menu-label">Laporan Looker</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#bagian-kepuasan" class="menu-toggle" onclick="setActiveLink(this)">
+                        <i class="fa-solid fa-square-poll-horizontal"></i>
+                        <span class="menu-label">Tingkat Kepuasan</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <h1>Portal Hub Informasi Terpadu</h1>
+                    <p>Integrasi Google Form, Live Spreadsheet, dan Visualisasi Looker Studio</p>
+                </div>
+                <a href="index.html" class="btn-topbar-home">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali ke index.html
+                </a>
+            </div>
+
+            <div id="bagian-form" class="container">
+                <h2>Silakan Isi Formulir</h2>
+                <div class="iframe-wrapper form-wrapper">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLuYYo1_by_THjP6Nhukn-h_JzDlTREVJIY7jbEBqYu8cB9w/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+                </div>
+            </div>
+
+            <div id="bagian-sheet" class="container">
+                <h2>Hasil Data Spreadsheet</h2>
+                <div class="iframe-wrapper sheet-wrapper">
+                    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM11fTl2P00gavAILiYFHLVMArgpnh_3rlBSjcxLQk063Z5JkbRT9-X9UaqSRh2y2Lf9OBhRTA8TAm/pubhtml?widget=true&amp;headers=false"></iframe>
+                    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRLK-a5_dCm-pZQ0vEKddV7ff7-n-jBNSLqh-8RJ71eqTL79xNUrYSkcpm16aa8fxBRgmynTcght0l8/pubhtml?gid=1490475136&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+                </div>
+            </div>
+
+            <div id="bagian-looker" class="container">
+                <h2>Sajian Data Looker Studio</h2>
+                <div class="iframe-wrapper looker-wrapper">
+                    <iframe src="https://datastudio.google.com/embed/reporting/e1184f6e-8a87-4fda-9bcd-a2d9a1491307/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                </div>
+            </div>
+
+            <div id="bagian-kepuasan" class="container">
+                <h2>Form Tingkat Kepuasan Aktivitas Kelompok</h2>
+                <div class="iframe-wrapper kepuasan-wrapper">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7euSbsvP_r2RyfhGU_Jp3aPthHtznSF1CkQBQIabHNmLR2A/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div id="bagian-sheet" class="container">
-        <h2>Hasil Data Spreadsheet</h2>
-        <div class="iframe-wrapper sheet-wrapper">
-            <iframe src="https://docs.google.com/spreadsheets/d/1T_votgJVPGK2EzSUe9bRK2uHp3ukot6rWuTqjk0oqTY/edit?usp=sharing"></iframe>
-            <iframe src="https://docs.google.com/spreadsheets/d/1FUV3-ZW-nB_XqdMfHjuDW1LTiu1SJq0CN7JfEX2SMZA/edit?usp=sharing"></iframe>
-        </div>
-    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
 
-    <div id="bagian-looker" class="container">
-        <h2>Sajian Data Looker Studio</h2>
-        <div class="iframe-wrapper looker-wrapper">
-            <iframe src="https://datastudio.google.com/reporting/b59f7f1d-869e-46ce-888b-183ed4c6e335" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>"></iframe>
-        </div>
-    </div>
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+        }
 
-    <div id="bagian-kepuasan" class="container">
-        <h2>Form Tingkat Kepuasan Aktivitas Kelompok</h2>
-        <div class="iframe-wrapper kepuasan-wrapper">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7euSbsvP_r2RyfhGU_Jp3aPthHtznSF1CkQBQIabHNmLR2A/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-        </div>
-    </div>
+        function setActiveLink(element) {
+            document.querySelectorAll('.menu-toggle').forEach(link => {
+                link.classList.remove('active');
+            });
+            element.classList.add('active');
 
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+            }
+        }
+    </script>
 </body>
 </html>

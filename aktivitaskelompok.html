@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Monitoring & Kepuasan</title>
+    <title>Dashboard Integrasi Google Workspace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -15,27 +15,31 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             padding: 20px;
-            margin-bottom: 30px;
-            border: 1px solid #e3e6f0;
+            margin-bottom: 25px;
         }
-        .card-title {
-            color: #4e73df;
+        .nav-tabs .nav-link {
+            color: #495057;
+            font-weight: 500;
+            border-radius: 8px 8px 0 0;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #ffffff;
+            color: #0d6efd;
             font-weight: 600;
-            border-bottom: 2px solid #eaecf4;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
         }
-        /* Pembungkus Iframe agar Responsif */
+        /* Pembungkus iframe agar responsif */
         .iframe-wrapper {
             position: relative;
-            overflow: hidden;
             width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e3e6f0;
         }
-        .aspect-ratio-16-9 {
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        .ratio-16-9 {
+            padding-top: 56.25%; /* Aspect Ratio 16:9 */
         }
-        .aspect-ratio-custom {
-            padding-top: 75%; /* Lebih kotak untuk data studio/spreadsheet */
+        .ratio-custom-form {
+            height: 900px;
         }
         .iframe-wrapper iframe {
             position: absolute;
@@ -44,91 +48,68 @@
             width: 100%;
             height: 100%;
             border: 0;
-            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow-sm">
+    <div class="container-fluid bg-primary text-white py-4 mb-4 shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">📊 DASHBOARD INTEGRASI SISTEM</a>
+            <h1 class="fw-bold m-0">Sistem Dashboard Terintegrasi</h1>
+            <p class="lead m-0 opacity-75 fs-6">Formulir, Monitoring Spreadsheet, dan Analisis Looker Studio dalam Satu Tempat</p>
         </div>
-    </nav>
-
-    <div class="container">
-        
-        <div class="row">
-            <h2 class="h4 mb-4 fw-bold text-dark">📋 Bagian 1: Input & Data Utama</h2>
-            
-            <div class="col-lg-5">
-                <div class="dashboard-card">
-                    <h3 class="h5 card-title">Formulir Input Utama</h3>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfM-3MdAWnNfsol9LXBN94_Kpal7eoX6zdGrsjXb7KOxwtWqA/viewform?embedded=true" 
-                            width="100%" 
-                            height="800" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0">Memuat…</iframe>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="dashboard-card">
-                    <h3 class="h5 card-title">Sajian Data Spreadsheet Utama</h3>
-                    <div class="iframe-wrapper aspect-ratio-custom" style="min-height: 740px;">
-                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQy9L9t93cSEVC2MTdT4csYv-tOTsJMljHbx19ngZH1Jbw-9-0PgcgeLQa0G_-o7bv7eIwPDGV73RR7/pubhtml?widget=true&amp;headers=false"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-5">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="dashboard-card">
-                    <h2 class="h5 card-title text-success">📈 Visualisasi Data Studio</h2>
-                    <p class="text-muted small">Catatan: Pastikan link laporan Google Data Studio Anda sudah diset "Dapat dilihat oleh publik" atau dicopy melalui menu "Sematkan Laporan" di Data Studio.</p>
-                    <div class="iframe-wrapper aspect-ratio-16-9" style="min-height: 600px;">
-                        <iframe src="https://datastudio.google.com/embed/reporting/04f15183-1a6f-4892-9ffe-5ea03bf8a43e" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-5">
-
-        <div class="row">
-            <h2 class="h4 mb-4 fw-bold text-dark">⭐ Bagian 2: Survei Tingkat Kepuasan</h2>
-            
-            <div class="col-lg-5">
-                <div class="dashboard-card">
-                    <h3 class="h5 card-title">Formulir Kepuasan</h3>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0nOK4Y2crgeXXgfJDmdOKBQA1_QozPbcHR-GvvgoTYFIwFQ/viewform?embedded=true" 
-                            width="100%" 
-                            height="550" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0">Memuat…</iframe>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="dashboard-card">
-                    <h3 class="h5 card-title">Sajian Data Spreadsheet Kepuasan</h3>
-                    <div class="iframe-wrapper aspect-ratio-custom" style="min-height: 490px;">
-                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTNpJtGRk0eL-jtKrESNhKV5W9kCVB0CPatKPEFSFvnHfFV2Jx7jWtsuzIPBcsw3GlBU4tf0ypkR6Eg/pubhtml?widget=true&amp;headers=false"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p class="mb-0">&copy; 2026 Dashboard Integrasi Google Suite. All Rights Reserved.</p>
-    </footer>
+    <div class="container-fluid px-4">
+        <div class="row">
+            
+            <div class="col-xl-4 col-lg-5">
+                <div class="dashboard-card">
+                    <h2 class="h5 mb-3 fw-bold text-secondary border-bottom pb-2">📋 Formulir Input</h2>
+                    <div class="iframe-wrapper ratio-custom-form" style="position: relative;">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfM-3MdAWnNfsol9LXBN94_Kpal7eoX6zdGrsjXb7KOxwtWqA/viewform?embedded=true" 
+                                frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-lg-7">
+                <div class="dashboard-card">
+                    
+                    <ul class="nav nav-tabs mb-3" id="dashboardTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="sheet1-tab" data-bs-toggle="tab" data-bs-target="#sheet1" type="button" role="tab">📊 Spreadsheet Data 1</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="sheet2-tab" data-bs-toggle="tab" data-bs-target="#sheet2" type="button" role="tab">📈 Spreadsheet Data 2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="report-tab" data-bs-toggle="tab" data-bs-target="#report" type="button" role="tab">🖥️ Looker Studio Report</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="dashboardTabsContent">
+                        
+                        <div class="tab-pane fade show active" id="sheet1" role="tabpanel">
+                            <div class="iframe-wrapper ratio-16-9">
+                                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQy9L9t93cSEVC2MTdT4csYv-tOTsJMljHbx19ngZH1Jbw-9-0PgcgeLQa0G_-o7bv7eIwPDGV73RR7/pubhtml?widget=true&amp;headers=false"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sheet2" role="tabpanel">
+                            <div class="iframe-wrapper ratio-16-9">
+                                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTNpJtGRk0eL-jtKrESNhKV5W9kCVB0CPatKPEFSFvnHfFV2Jx7jWtsuzIPBcsw3GlBU4tf0ypkR6Eg/pubhtml?widget=true&amp;headers=false"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="report" role="tabpanel">
+                            <div class="iframe-wrapper ratio-16-9">
+                                <iframe src="https://datastudio.google.com/embed/reporting/04f15183-1a6f-4892-9ffe-5ea03bf8a43e/page/1M" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                    </div> </div> </div> </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

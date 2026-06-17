@@ -5,132 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Monitoring & Kepuasan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background-color: #f4f6f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 70px; /* Memberi ruang agar konten tidak tertutup navbar */
         }
-        .dashboard-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 40px 0;
-            margin-bottom: 30px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .card-embed {
+        .card-custom {
             background: #ffffff;
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
             padding: 20px;
+        }
+        .section-title {
+            border-left: 5px solid #0d6efd;
+            padding-left: 15px;
             margin-bottom: 25px;
+            font-weight: 700;
+            color: #212529;
         }
-        .nav-pills .nav-link.active {
-            background-color: #1e3c72;
-        }
-        .nav-pills .nav-link {
-            color: #1e3c72;
-            font-weight: 600;
-        }
-        /* Pembungkus iframe agar responsif */
-        .responsive-iframe {
+        /* Pembungkus Iframe agar Responsif */
+        .iframe-wrapper {
             position: relative;
-            width: 100%;
             overflow: hidden;
-        }
-        .responsive-iframe iframe {
             width: 100%;
-            border: none;
             border-radius: 8px;
+            border: 1px solid #e3e6f0;
+        }
+        .ratio-spreadsheet {
+            padding-top: 60%; /* Proporsi ideal spreadsheet */
+        }
+        .ratio-datastudio {
+            padding-top: 75%; /* Proporsi ideal Looker Studio */
+        }
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* Tombol Beranda Melayang (Floating) di pojok kanan bawah */
+        .floating-home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            border-radius: 50px;
+            padding: 12px 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .floating-home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="dashboard-header text-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
         <div class="container">
-            <h1 class="fw-bold">AKTIVITAS KELOMPOK KUB</h1>
-    </div>
-
-    <div class="container">
-        <ul class="nav nav-pills nav-fill mb-4 p-2 bg-white rounded-3 shadow-sm" id="dashboardTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="utama-tab" data-bs-toggle="tab" data-bs-target="#utama" type="button" role="tab">
-                    📌 Form & Data Utama
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="kepuasan-tab" data-bs-toggle="tab" data-bs-target="#kepuasan" type="button" role="tab">
-                    ⭐ Tingkat Kepuasan
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="studio-tab" data-bs-toggle="tab" data-bs-target="#studio" type="button" role="tab">
-                    📊 Looker Data Studio
-                </button>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="dashboardTabsContent">
-            
-            <div class="tab-pane fade show active" id="utama" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="card-embed">
-                            <h4 class="fw-bold text-secondary mb-3">Formulir Input Utama</h4>
-                            <div class="responsive-iframe">
-                                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfM-3MdAWnNfsol9LXBN94_Kpal7eoX6zdGrsjXb7KOxwtWqA/viewform?embedded=true" height="900">Memuat…</iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="card-embed">
-                            <h4 class="fw-bold text-secondary mb-3">Respon Data Utama</h4>
-                            <div class="responsive-iframe">
-                                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQy9L9t93cSEVC2MTdT4csYv-tOTsJMljHbx19ngZH1Jbw-9-0PgcgeLQa0G_-o7bv7eIwPDGV73RR7/pubhtml?widget=true&amp;headers=false" height="900">Memuat…</iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-chart-pie me-2"></i>Dashboard Integrasi</a>
+            <div class="ms-auto">
+                <a href="#" class="btn btn-outline-light btn-sm px-3 rounded-pill">
+                    <i class="fa-solid fa-house me-1"></i> Kembali ke Beranda
+                </a>
             </div>
-
-            <div class="tab-pane fade" id="kepuasan" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="card-embed">
-                            <h4 class="fw-bold text-secondary mb-3">Formulir Kepuasan</h4>
-                            <div class="responsive-iframe">
-                                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0nOK4Y2crgeXXgfJDmdOKBQA1_QozPbcHR-GvvgoTYFIwFQ/viewform?embedded=true" height="600">Memuat…</iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="card-embed">
-                            <h4 class="fw-bold text-secondary mb-3">Data Kepuasan Pelanggan</h4>
-                            <div class="responsive-iframe">
-                                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTNpJtGRk0eL-jtKrESNhKV5W9kCVB0CPatKPEFSFvnHfFV2Jx7jWtsuzIPBcsw3GlBU4tf0ypkR6Eg/pubhtml?widget=true&amp;headers=false" height="600">Memuat…</iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="studio" role="tabpanel">
-                <div class="card-embed">
-                    <h4 class="fw-bold text-secondary mb-3">Analisis & Laporan Visual (Data Studio)</h4>
-                    <div class="responsive-iframe">
-                        <iframe src="https://datastudio.google.com/embed/reporting/04f15183-1a6f-4892-9ffe-5ea03bf8a43e/page/page_12345" height="750" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
         </div>
+    </nav>
+
+    <div class="container my-4">
+        
+        <h2 class="section-title">Bagian I: Input Data & Monitoring Utama</h2>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card-custom">
+                    <h4 class="h5 mb-3 fw-bold text-secondary"><i class="fa-solid fa-wpforms me-2"></i>Formulir Input Data</h4>
+                    <div class="iframe-wrapper" style="height: 800px;">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfM-3MdAWnNfsol9LXBN94_Kpal7eoX6zdGrsjXb7KOxwtWqA/viewform?embedded=true">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card-custom">
+                    <h4 class="h5 mb-3 fw-bold text-secondary"><i class="fa-solid fa-table me-2"></i>Tabel Data Realtime</h4>
+                    <div class="iframe-wrapper ratio-spreadsheet">
+                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQy9L9t93cSEVC2MTdT4csYv-tOTsJMljHbx19ngZH1Jbw-9-0PgcgeLQa0G_-o7bv7eIwPDGV73RR7/pubhtml?widget=true&amp;headers=false">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Bagian II: Analisis Data Studio</h2>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-custom">
+                    <h4 class="h5 mb-3 fw-bold text-secondary"><i class="fa-solid fa-chart-line me-2"></i>Looker Studio Interactive Report</h4>
+                    <div class="iframe-wrapper ratio-datastudio">
+                        <iframe src="https://datastudio.google.com/embed/reporting/04f15183-1a6f-4892-9ffe-5ea03bf8a43e/page/page_12345" allowfullscreen>Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Bagian III: Survei Tingkat Kepuasan</h2>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card-custom">
+                    <h4 class="h5 mb-3 fw-bold text-secondary"><i class="fa-solid fa-heart-circle-check me-2"></i>Form Kepuasan</h4>
+                    <div class="iframe-wrapper" style="height: 540px;">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0nOK4Y2crgeXXgfJDmdOKBQA1_QozPbcHR-GvvgoTYFIwFQ/viewform?embedded=true">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card-custom">
+                    <h4 class="h5 mb-3 fw-bold text-secondary"><i class="fa-solid fa-ranking-star me-2"></i>Data Respon Kepuasan</h4>
+                    <div class="iframe-wrapper ratio-spreadsheet">
+                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTNpJtGRk0eL-jtKrESNhKV5W9kCVB0CPatKPEFSFvnHfFV2Jx7jWtsuzIPBcsw3GlBU4tf0ypkR6Eg/pubhtml?widget=true&amp;headers=false">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <footer class="text-center my-5 text-muted small">
-        &copy; 2026 Dashboard Terintegrasi. Ditayangkan via GitHub Pages.
-    </footer>
+    <a href="#" class="btn btn-primary floating-home-btn text-white fw-bold">
+        <i class="fa-solid fa-house-chimney me-2"></i> Beranda
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
